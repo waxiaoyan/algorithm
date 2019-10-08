@@ -27,23 +27,17 @@ public class MergeSort {
         int[] temp = new int[right - left + 1];
         while(n1 <= mid && n2 <= right) {
             if(arr[n1] > arr[n2]) {
-                temp[k] = arr[n2];
-                n2++;
+                temp[k] = arr[n2++];
             }else{
-                temp[k] = arr[n1];
-                n1++;
+                temp[k] = arr[n1++];
             }
             k++;
         }
         while(n1 <= mid) {
-            temp[k] = arr[n1];
-            k++;
-            n1++;
+            temp[k++] = arr[n1++];
         }
         while(n2 <= right){
-            temp[k] = arr[n2];
-            k++;
-            n2++;
+            temp[k++] = arr[n2++];
         }
         for(int i = 0; i < temp.length; i++) {
             arr[left+i] = temp[i];
