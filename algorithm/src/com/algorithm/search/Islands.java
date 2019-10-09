@@ -24,6 +24,7 @@ class Islands {
 
     void dfsSearch(int[][] lands, int row, int col) {
         visited[row][col] = true;
+        //数组中某个元素对应的上下左右共八个元素的坐标
         int[] rows = {-1,-1,-1,0, 0,1,1,1};
         int[] cols = {-1, 0, 1,-1,1,-1,-1,0};
         for(int i = 0; i < rows.length; i++) {

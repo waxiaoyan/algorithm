@@ -10,13 +10,20 @@ public class DFSSearch {
 
     public static void main(String[] args) {
         DFSSearch g = new DFSSearch(4);
+//        g.addEdge(0, 1);
+//        g.addEdge(0, 2);
+//        g.addEdge(1, 2);
+//        g.addEdge(2, 0);
+//        g.addEdge(2, 3);
+//        g.addEdge(3, 3);
+//        g.dfs(0);
         g.addEdge(0, 1);
         g.addEdge(0, 2);
         g.addEdge(1, 2);
         g.addEdge(2, 0);
         g.addEdge(2, 3);
         g.addEdge(3, 3);
-        g.dfs(0);
+        g.dfs(2);
         Iterator i = path.iterator();
         while(i.hasNext()) {
             System.out.print(i.next() + " ");
