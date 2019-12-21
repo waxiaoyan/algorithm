@@ -25,6 +25,8 @@ public class RadixSort {
             count[i] += count[i-1];
         }
 
+        //从最后一位开始循环是因为当按个位排完序后的数组，个位最大的排在最后，当再次根据十位数去排序时，
+        // 在输出完十位数字最大的后，个位数对应的COUNT的index都是0，输出时需从最大的开始输出
         for(int i = arr.length - 1; i >= 0; i--) {
             output[count[(arr[i]/exp) % 10] -1] = arr[i];
             count[(arr[i]/exp) % 10] --;
