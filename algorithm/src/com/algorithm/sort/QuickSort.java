@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class QuickSort {
     public static void main(String[] args) {
-        int[] arr = {3,2,4,54, 0,290, 0,1,21};
+        int[] arr = {3, 2, 4, 54, 0, 290, 0, 1, 21};
         sort(arr);
         print(arr);
     }
@@ -13,16 +13,16 @@ public class QuickSort {
         sort(arr, 0, arr.length - 1);
     }
 
-    private static void sort(int[] arr, int low,int high){
-        if(low < high) {
-            int pivot = partition(arr,low,high);
+    private static void sort(int[] arr, int low, int high) {
+        if (low < high) {
+            int pivot = partition(arr, low, high);
             sort(arr, low, pivot);
-            sort(arr,pivot + 1, high);
+            sort(arr, pivot + 1, high);
         }
 
     }
 
-    private static int getPivot(int low, int high){
+    private static int getPivot(int low, int high) {
         return new Random().nextInt(high - low + 1) + low;
     }
 
@@ -30,9 +30,9 @@ public class QuickSort {
         int pivot = getPivot(low, high);
         swap(arr, low, pivot);
         int border = low + 1;
-        for(int j = border; j <= high; j++) {
-            if(arr[j] < arr[low]) {
-                swap(arr,j,border);
+        for (int j = border; j <= high; j++) {
+            if (arr[j] < arr[low]) {
+                swap(arr, j, border);
                 border++;
             }
         }

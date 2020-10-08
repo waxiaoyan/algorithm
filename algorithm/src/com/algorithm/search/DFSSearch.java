@@ -25,7 +25,7 @@ public class DFSSearch {
         g.addEdge(3, 3);
         g.dfs(2);
         Iterator i = path.iterator();
-        while(i.hasNext()) {
+        while (i.hasNext()) {
             System.out.print(i.next() + " ");
         }
     }
@@ -37,25 +37,26 @@ public class DFSSearch {
             adjacency[i] = new LinkedList<>();
         }
     }
+
     void addEdge(int v, int w) {
         adjacency[v].add(w);
     }
 
-    void dfsUtil(int v, boolean[] visited){
+    void dfsUtil(int v, boolean[] visited) {
         visited[v] = true;
         path.add(v);
         Iterator<Integer> i = adjacency[v].listIterator();
-        while(i.hasNext()) {
+        while (i.hasNext()) {
             int n = i.next();
-            if(!visited[n]) {
-                dfsUtil(n,visited);
+            if (!visited[n]) {
+                dfsUtil(n, visited);
             }
         }
     }
 
-    void dfs(int n){
+    void dfs(int n) {
         boolean[] visited = new boolean[this.v];
-        dfsUtil(n,visited);
+        dfsUtil(n, visited);
     }
 
 }

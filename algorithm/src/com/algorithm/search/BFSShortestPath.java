@@ -4,44 +4,47 @@ package com.algorithm.search;
 import java.util.*;
 
 public class BFSShortestPath {
-    public static Graph constructGraph()
-    {
-        int noOfVertices,noOfEdges;
-        Graph graph=null;
-
-        int u, v;
-        Scanner scanner=new Scanner(System.in);
-        while(scanner.hasNext())
-        {
-            noOfVertices=scanner.nextInt();
-            noOfEdges=scanner.nextInt();
-
-
-            graph=new Graph(noOfVertices);
-            for(int i=0;i<noOfEdges;i++)
-            {
-                u=scanner.nextInt();
-                v=scanner.nextInt();
-                graph.addEdge(u, v);
-                graph.addEdge(v, u);
-            }
-            break;
-        }
+    public static Graph constructGraph() {
+//        int noOfVertices,noOfEdges;
+//        Graph graph=null;
+//
+//        int u, v;
+//        Scanner scanner=new Scanner(System.in);
+//        while(scanner.hasNext())
+//        {
+//            noOfVertices=scanner.nextInt();
+//            noOfEdges=scanner.nextInt();
+//
+//
+//            graph=new Graph(noOfVertices);
+//            for(int i=0;i<noOfEdges;i++)
+//            {
+//                u=scanner.nextInt();
+//                v=scanner.nextInt();
+//                graph.addEdge(u, v);
+//                graph.addEdge(v, u);
+//            }
+//            break;
+//        }
         //graph.printGraph();
+        Graph graph = new Graph(3);
+        graph.addEdge(1, 2);
+        graph.addEdge(1, 3);
+        graph.addEdge(3, 1);
+        graph.addEdge(2, 1);
+        graph.addEdge(2, 3);
+        graph.addEdge(3, 2);
         return graph;
     }
 
     /**
-     *
-     *
      * @param graph
      * @param source
      * @param dest
      * @return
      */
 
-    public static ArrayList<Integer> doBFSShortestPath(Graph graph, int source, int dest)
-    {
+    public static ArrayList<Integer> doBFSShortestPath(Graph graph, int source, int dest) {
         ArrayList<Integer> shortestPathList = new ArrayList<Integer>();
         HashMap<Integer, Boolean> visited = new HashMap<Integer, Boolean>();
 
@@ -54,19 +57,16 @@ public class BFSShortestPath {
         pathStack.add(source);
         visited.put(source, true);
 
-        while(!queue.isEmpty())
-        {
+        while (!queue.isEmpty()) {
             int u = queue.poll();
             ArrayList<Integer> adjList = graph.getOutEdges(u);
 
-            for(int v : adjList)
-            {
-                if(!visited.containsKey(v))
-                {
+            for (int v : adjList) {
+                if (!visited.containsKey(v)) {
                     queue.add(v);
                     visited.put(v, true);
                     pathStack.add(v);
-                    if(u == dest)
+                    if (u == dest)
                         break;
                 }
             }
@@ -74,16 +74,14 @@ public class BFSShortestPath {
 
 
         //To find the path
-        int node, currentSrc=dest;
+        int node, currentSrc = dest;
         shortestPathList.add(dest);
-        while(!pathStack.isEmpty())
-        {
+        while (!pathStack.isEmpty()) {
             node = pathStack.pop();
-            if(graph.isNeighbor(currentSrc, node))
-            {
+            if (graph.isNeighbor(currentSrc, node)) {
                 shortestPathList.add(node);
                 currentSrc = node;
-                if(node == source)
+                if (node == source)
                     break;
             }
         }
@@ -93,23 +91,20 @@ public class BFSShortestPath {
 
 
     /**
-     *
      * Method to find the shortest path
      */
-    public static void findShortestPath()
-    {
+    public static void findShortestPath() {
 
         Graph graph = constructGraph();
         Scanner scanner = new Scanner(System.in);
         int source = scanner.nextInt();
         int dest = scanner.nextInt();
 
-        ArrayList<Integer> shortestPathList =  doBFSShortestPath(graph, source, dest);
+        ArrayList<Integer> shortestPathList = doBFSShortestPath(graph, source, dest);
 
         System.out.print("[ ");
-        for(int node : shortestPathList)
-        {
-            System.out.print(node+" ");
+        for (int node : shortestPathList) {
+            System.out.print(node + " ");
         }
         System.out.print("]");
     }
